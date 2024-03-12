@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Programming Language List</h1>
+<div class="language">
+    <h3>Language 1</h3>
+    <h4>Name</h4>
+    <a href="/language/1">Python</a>
+    <h4>Creator</h4>
+    <p>by Guido van Rossum</p>
+    <h4>Description</h4>
+    <p>Python is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code
+        readability with its use of significant indentation.</p>
+</div>
+</br>
+<div class="language">
+    <h3>Language 2</h3>
+    <h4>Name</h4>
+    <a href="/language/2">JavaScript</a>
+    <h4>Creator</h4>
+    <p>by Brendan Eich</p>
+    <h4>Description</h4>
+    <p>JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification.
+        It has dynamic typing, prototype-based object-orientation, and first-class functions.</p>
+</div>
+{% endblock content %}
