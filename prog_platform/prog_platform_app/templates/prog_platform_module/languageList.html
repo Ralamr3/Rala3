@@ -1,26 +1,42 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<h1>Programming Language List</h1>
-<div class="language">
-    <h3>Language 1</h3>
-    <h4>Name</h4>
-    <a href="/language/1">Python</a>
-    <h4>Creator</h4>
-    <p>by Guido van Rossum</p>
-    <h4>Description</h4>
-    <p>Python is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code
-        readability with its use of significant indentation.</p>
+<h1>Programming Languages</h1>
+
+<div class="form-section">
+    <form method="get" action="{% url 'filter_language' %}">
+        <label for="search_name">Search by Name:</label>
+        <input type="text" id="search_name" name="search_name">
+
+        <label for=" paradigm">Select Paradigm:</label>
+        <select id="paradigm" name="paradigm">
+            <option value="">--Any--</option>
+            <option value="Object-oriented">
+                Object-oriented</option>
+            <option value="Functional">Functional</option>
+            <option value="Event-driven">Event-driven
+            </option>
+        </select>
+
+        <input type="submit" value="Search">
+    </form>
 </div>
-</br>
-<div class="language">
-    <h3>Language 2</h3>
-    <h4>Name</h4>
-    <a href="/language/2">JavaScript</a>
-    <h4>Creator</h4>
-    <p>by Brendan Eich</p>
-    <h4>Description</h4>
-    <p>JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript specification.
-        It has dynamic typing, prototype-based object-orientation, and first-class functions.</p>
-</div>
+
+<ul class="languages-list">
+
+    {% for language in languages %}
+    <li>
+        <h2 class="language-name">{{ language.name }}</h2>
+        <div class="language-details">
+            <p>Creator: {{ language.creator }}</p>
+            <p>Released in: {{ language.release_year }}</p>
+            <p>Paradigm: {{ language.paradigm }}</p>
+            <p>Typical Use: {{ language.typical_use }}</p>
+            <a href="language/{{ language.id }}">Learn More</a>
+        </div>
+    </li>
+    {% empty %}
+    <p>No languages available.</p>
+    {% endfor %}
+</ul>
 {% endblock content %}

@@ -17,12 +17,24 @@
 {% load static %}
 <main>
     <section class="image-display">
-        <img src="{% static 'prog.jpg' %}" alt="Programming Concept">
+        <img src="{% static 'images/prog.jpg' %}" alt="Programming Concept">
 
     </section>
     <section class="content">
         <h2>Welcome to Your Programming Journey!</h2>
         <p>Explore various programming languages, understand coding concepts, and start building your own projects!</p>
+    </section>
+    <section class="form-section">
+        <h2>Sign Up for Updates</h2>
+        <form action="/submit_form" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <input type="submit" value="Submit">
+        </form>
     </section>
 </main>
 

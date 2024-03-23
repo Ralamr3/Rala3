@@ -1,0 +1,135 @@
+body {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+header h2 {
+  margin: 0;
+  padding-left: 20px;
+  flex-grow: 1;
+}
+
+nav {
+  margin-right: 20px;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+}
+
+.image-display img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.content {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: left;
+}
+
+form label,
+form input,
+form select {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+form input[type="submit"] {
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #444;
+}
+
+.languages-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.languages-list li {
+  background-color: #f2f2f2;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.languages-list li:hover {
+  background-color: #eaeaea;
+}
+
+.language-name {
+  color: #333;
+  font-size: 1.4em;
+  margin-bottom: 5px;
+}
+
+.language-details {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.language-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.language-details a:hover {
+  text-decoration: underline;
+}
