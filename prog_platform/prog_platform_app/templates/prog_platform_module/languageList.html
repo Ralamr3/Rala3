@@ -3,6 +3,9 @@
 {% block content %}
 <h1>Programming Languages</h1>
 
+<a href="{%url 'add_language'%}">
+    <button>Add new Language</button>
+</a>
 <div class="form-section">
     <form method="get" action="{% url 'filter_language' %}">
         <label for="search_name">Search by Name:</label>
@@ -26,6 +29,10 @@
 
     {% for language in languages %}
     <li>
+        <a href="{% url 'update_language' language.id %}">
+            <button>update language</button>
+        </a>
+
         <h2 class="language-name">{{ language.name }}</h2>
         <div class="language-details">
             <p>Creator: {{ language.creator }}</p>

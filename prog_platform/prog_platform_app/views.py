@@ -12,17 +12,12 @@ def language_list(request):
 
 
 def language_details(request, lang_id):
+
+    language = ProgrammingLanguage.objects.get(id=lang_id)
     
-    language1 = {'id': 1, 'name': 'Python', 'creator': 'Guido van Rossum'}
-    language2 = {'id': 2, 'name': 'JavaScript', 'creator': 'Brendan Eich'}
+    if language is None: return redirect('language_list')
     
-    targetLanguage = None
-    if language1['id'] == lang_id: targetLanguage = language1
-    if language2['id'] == lang_id: targetLanguage = language2
-    
-    if targetLanguage is None: return redirect('language_list')
-    
-    context = {'language': targetLanguage} # 'language' is the variable name accessible by the template
+    context = {'language': language} 
     return render(request, 'prog_platform_module/languageDetails.html', context)
 
 
@@ -38,3 +33,29 @@ def filter_language(request):
 
     languages = languages.order_by('name')
     return render(request, 'prog_platform_module/languageList.html', {'languages': languages})
+
+
+
+def add_language(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        creator = request.POST['creator']
+        release_year = request.POST['release_year']
+        paradigm = request.POST['paradigm']
+        typical_use = request.POST['typical_use']
+        language = ProgrammingLanguage(name=name, creator=creator, release_year=release_year, paradigm=paradigm, typical_use=typical_use)
+        language.save()
+        return redirect('language_list')
+    return render(request, 'prog_platform_module/add_language.html')
+
+def update_language(request, lang_id):
+    language = ProgrammingLanguage.objects.get(id=lang_id)
+    if request.method == 'POST':
+        language.name = request.POST['name']
+        language.creator = request.POST['creator']
+        language.release_year = request.POST['release_year']
+        language.paradigm = request.POST['paradigm']
+        language.typical_use = request.POST['typical_use']
+        language.save()
+        return redirect('language_details', lang_id=language.id)
+    return render(request, 'prog_platform_module/update_language.html', {'language': language})

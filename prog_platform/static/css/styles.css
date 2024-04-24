@@ -66,6 +66,7 @@ form {
   display: inline-block;
   margin-top: 20px;
   text-align: left;
+  width: 70%;
 }
 
 form label,
@@ -132,4 +133,28 @@ form input[type="submit"]:hover {
 
 .language-details a:hover {
   text-decoration: underline;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+button {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
 }
