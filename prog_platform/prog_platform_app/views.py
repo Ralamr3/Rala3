@@ -51,11 +51,16 @@ def add_language(request):
 def update_language(request, lang_id):
     language = ProgrammingLanguage.objects.get(id=lang_id)
     if request.method == 'POST':
-        language.name = request.POST['name']
-        language.creator = request.POST['creator']
-        language.release_year = request.POST['release_year']
-        language.paradigm = request.POST['paradigm']
-        language.typical_use = request.POST['typical_use']
-        language.save()
-        return redirect('language_details', lang_id=language.id)
-    return render(request, 'prog_platform_module/update_language.html', {'language': language})
+        form = LanguageForm(request.POST, instance=language)
+        if form.is_valid():
+            form.save()
+            return redirect('language_details', lang_id=language.id)
+    else:
+        form = LanguageForm(instance=language)
+    return render(request, 'prog_platform_module/update_language.html', {'form': form})
+
+
+def delete_language(request, lang_id):
+    language = ProgrammingLanguage.objects.get(id=lang_id)
+    language.delete()
+    return redirect('language_list')  # Redirect to the list of languages

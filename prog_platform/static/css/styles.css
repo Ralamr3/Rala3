@@ -92,6 +92,10 @@ form input[type="submit"] {
   border: none;
   cursor: pointer;
 }
+#delete_btn {
+  background-color: red;
+  color: black;
+}
 
 form input[type="submit"]:hover {
   background-color: #444;

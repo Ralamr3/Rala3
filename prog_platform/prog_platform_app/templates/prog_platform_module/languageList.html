@@ -32,6 +32,10 @@
         <a href="{% url 'update_language' language.id %}">
             <button>update language</button>
         </a>
+        <a href="{% url 'delete_language' language.id %}"
+            onclick="return confirm('Are you sure you want to delete this?');">
+            <button id="delete_btn">Delete Language</button>
+        </a>
 
         <h2 class="language-name">{{ language.name }}</h2>
         <div class="language-details">
@@ -40,6 +44,7 @@
             <p>Paradigm: {{ language.paradigm }}</p>
             <p>Typical Use: {{ language.typical_use }}</p>
             <a href="language/{{ language.id }}">Learn More</a>
+
         </div>
     </li>
     {% empty %}
