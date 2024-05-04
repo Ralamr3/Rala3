@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+
+from .forms import LanguageForm
 from .models import ProgrammingLanguage
 
 def index(request):
@@ -38,15 +40,13 @@ def filter_language(request):
 
 def add_language(request):
     if request.method == 'POST':
-        name = request.POST['name']
-        creator = request.POST['creator']
-        release_year = request.POST['release_year']
-        paradigm = request.POST['paradigm']
-        typical_use = request.POST['typical_use']
-        language = ProgrammingLanguage(name=name, creator=creator, release_year=release_year, paradigm=paradigm, typical_use=typical_use)
-        language.save()
-        return redirect('language_list')
-    return render(request, 'prog_platform_module/add_language.html')
+        form = LanguageForm(request.POST)
+        if form.is_valid():
+            obj=form.save()
+            return redirect('language_details', lang_id=obj.id)
+    else:
+        form = LanguageForm()
+    return render(request, 'prog_platform_module/add_language.html', {'form': form})
 
 def update_language(request, lang_id):
     language = ProgrammingLanguage.objects.get(id=lang_id)
